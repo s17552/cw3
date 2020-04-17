@@ -20,9 +20,24 @@ namespace Cw3.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetStudents(string orderBy)
+        public IActionResult GetStudents()
         {
             return Ok(_dbService.GetStudents());
+        }
+        
+        [HttpGet("{studentId}")]
+        public IActionResult getSelectedStudent(string studentId)
+        {
+            List<Student> students = _dbService.GetStudents();
+            Console.WriteLine("'" + studentId + "'");
+            Student queryingStudent = students.Find(student => student.IndexNumber == studentId);
+
+            if (queryingStudent != null)
+            {
+                return Ok(queryingStudent);
+            }
+            return NotFound("Nie znaleziono studenta");
+
         }
 
         /*

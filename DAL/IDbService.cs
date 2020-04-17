@@ -6,6 +6,8 @@ namespace Cw3.DAL
 {
     public interface IDbService
     {
-        public IEnumerable<Student> GetStudents();
+        public List<Student> GetStudents();
+        public List<Enrollment> GetEnrollments();
+        public List<Enrollment> fetchEnrollmentsForStudent(string studentId);
     }
 }
