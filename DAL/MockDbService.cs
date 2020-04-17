@@ -42,7 +42,8 @@ namespace Cw3.DAL
                     "SELECT * " +
                     "FROM Enrollment " +
                     "JOIN Student S on S.IdEnrollment = Enrollment.IdEnrollment " +
-                    "WHERE S.IndexNumber = " + studentId;
+                    "WHERE S.IndexNumber = @studentId";
+                com.Parameters.AddWithValue("studentId", studentId);
                 connection.Open();
                 var dr = com.ExecuteReader();
 
